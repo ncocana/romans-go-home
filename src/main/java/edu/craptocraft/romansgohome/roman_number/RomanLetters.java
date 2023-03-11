@@ -1,4 +1,4 @@
-package edu.craptocraft.romansgohome.RomanNumber;
+package edu.craptocraft.romansgohome.roman_number;
 
 public enum RomanLetters {
     

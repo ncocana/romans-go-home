@@ -28,10 +28,10 @@ public class RomanNumber {
         return this.romanNum;
     }
 
-    private Matcher createMatcher(String regex) {
-        Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(this.romanNum);
-    }
+    // private Matcher createMatcher(String regex) {
+    //     Pattern pattern = Pattern.compile(regex);
+    //     return pattern.matcher(this.romanNum);
+    // }
 
     public int decimalValue(String romanNum) {
         RomanLetters letter = Enum.valueOf(RomanLetters.class, String.valueOf(romanNum));

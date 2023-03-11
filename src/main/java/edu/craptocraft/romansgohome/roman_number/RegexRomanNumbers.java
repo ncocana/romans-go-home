@@ -1,26 +1,20 @@
 package edu.craptocraft.romansgohome.roman_number;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RegexRomanNumbers {
     
-    private List<String> regexExpressions = new ArrayList<>();
+    private String regexExpression;
 
-    public RegexRomanNumbers(List<String> regexExpressions) {
-        this.regexExpressions = regexExpressions;
+    public RegexRomanNumbers() {
+        this.initRegex();
     }
 
-    private void addRegex(String regex) {
-        this.regexExpressions.add(regex);
+    private void initRegex() {
+        this.regexExpression = "^(M{0,3})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
     }
 
-    private void initRegexList() {
-        this.addRegex("");
-    }
-
-    public String getRegex(int index) {
-        return this.regexExpressions.get(index);
+    @Override
+    public String toString() {
+        return this.regexExpression;
     }
 
 }

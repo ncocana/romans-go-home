@@ -2,6 +2,8 @@ package edu.craptocraft.romansgohome;
 
 import java.util.List;
 
+import edu.craptocraft.romansgohome.roman_number.RomanNumber;
+
 public class App 
 {
     public static void main( String[] args )

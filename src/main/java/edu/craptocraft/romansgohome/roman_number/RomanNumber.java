@@ -28,27 +28,17 @@ public class RomanNumber {
         return this.romanNum;
     }
 
-    // private Matcher createMatcher(String regex) {
-    //     Pattern pattern = Pattern.compile(regex);
-    //     return pattern.matcher(this.romanNum);
-    // }
-
-    public int decimalValue(String romanNum) {
-        RomanLetters letter = Enum.valueOf(RomanLetters.class, String.valueOf(romanNum));
-        return letter.getValueDecimal();
-    }
-
-    public int toDecimal() {
-        if (!this.romanNum.matches(this.getRegexExpression().toString())) {
+    public int decimalValue(String number) {
+        if (!number.matches(this.getRegexExpression().toString())) {
             throw new IllegalArgumentException("Invalid Roman numeral");
         }
 
-        for (int i = 0; i < this.romanNum.length(); i++) {
-            char currentChar = this.romanNum.charAt(i);
+        for (int i = 0; i < number.length(); i++) {
+            char currentChar = number.charAt(i);
             RomanLetters currentLetter = RomanLetters.valueOf(String.valueOf(currentChar));
 
-            if (i < this.romanNum.length() - 1) {
-                char nextChar = this.romanNum.charAt(i + 1);
+            if (i < number.length() - 1) {
+                char nextChar = number.charAt(i + 1);
                 RomanLetters nextLetter = RomanLetters.valueOf(String.valueOf(nextChar));
 
                 if (nextLetter.getValueDecimal() > currentLetter.getValueDecimal()) {
@@ -62,6 +52,19 @@ public class RomanNumber {
         }
 
         return decimalNumber;
+    }
+
+    private Matcher createMatcher(String regex) {
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(this.romanNum);
+    }
+
+    public int toDecimal() {
+        Matcher matcher = createMatcher(this.getRegexExpression().toString());
+        while (matcher.find()) {
+            this.decimalNumber += decimalValue(matcher.group());
+        }
+        return this.getDecimalNumber();
     }
 
 }
